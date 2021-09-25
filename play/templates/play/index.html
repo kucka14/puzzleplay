@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block body %}
+
+<div id="main-container">
+    <div id="puzzle-box">
+        {% for row in gridlist %}
+        <div class="puzzle-row" style="height: {{ size }};">
+            {% for cell in row %}
+            <div class="puzzle-cell" style="width: {{ size }};">{{ cell }}</div>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
