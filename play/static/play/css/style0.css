@@ -1,4 +1,13 @@
-#main-container {
+#index-container {
+    width: 100vw;
+    min-height: 100vh;
+    background-color: lightgray;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#puzzle-container {
     width: 100vw;
     min-height: 100vh;
     background-color: lightgray;
@@ -6,6 +15,12 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+}
+
+#puzzle-header {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
 }
 
 #control-row {
@@ -34,3 +49,25 @@
     align-items: center;
     justify-content: center;
 }
+
+.cell-image {
+    height: 60%;
+    width: 60%;
+}
+
+.change-cell {
+    background-color: #3295a8;
+}
+
+#bottom-row {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+
+
+
+
+
+
