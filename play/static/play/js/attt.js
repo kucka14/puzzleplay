@@ -139,9 +139,9 @@ function modifyGrid(gridlist, level) {
     if (level == 'easy') {
         removePercent = 0.3;
     } else if (level == 'medium') {
-        removePercent = 0.4;
-    } else {
         removePercent = 0.5;
+    } else {
+        removePercent = 0.8;
     }
     const gridArea = gridlist.length**2;
     const removeAmount = Math.floor(gridArea * removePercent);
