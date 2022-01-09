@@ -87,6 +87,10 @@
     opacity: 0.8;
 }
 
+#input-count {
+    width: 60px;
+}
+
 #main-panel {
     padding-top: 50px;
     text-align: center;

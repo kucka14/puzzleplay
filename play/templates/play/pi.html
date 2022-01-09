@@ -3,9 +3,15 @@
 
 <div id="top-panel-container">
     <div id="top-panel">
-        <div id="count-region">0</div>
+        <div id="count-region">
+            <div id="enter-count-div">
+                <button id="enter-count">Start At </button>
+                <input id="input-count">
+            </div>
+            <div style="display: none;" id="counter"></div>
+        </div>
         <div id="reset-div">
-            <button id="reset-enter">Reset</button>
+            <button style="display: none;" id="reset-enter">Reset</button>
             <div style="display: none;" id="reset-confirm-div">
                 Are you sure?
                 <button id="reset-confirm">Yes</button>
@@ -15,7 +21,7 @@
     </div>
 </div>
 
-<div id="main-panel">
+<div style="display: none;" id="main-panel">
     <div id="correct-region"></div>
     <input id="pi-input">
 </div>
