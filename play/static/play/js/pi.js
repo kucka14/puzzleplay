@@ -1,4 +1,11 @@
 
+function enterOff() {
+    document.querySelector('#counter').style.display = 'block';
+    document.querySelector('#reset-enter').style.display = 'inline-block';
+    document.querySelector('#main-panel').style.display = 'block';
+    document.querySelector('#enter-count-div').style.display = 'none';
+}
+
 function saveSession(count) {
     localStorage.setItem('count', count);
     const correctText = document.querySelector('#correct-region').innerHTML;
@@ -12,26 +19,11 @@ function restoreSession() {
     } else {
         count = parseInt(count);
         document.querySelector('#counter').innerHTML = count;
+        enterOff();
         const correctText = localStorage.getItem('correctText');
         document.querySelector('#correct-region').innerHTML = correctText;
-        document.querySelector('#counter').style.display = 'block';
-        document.querySelector('#reset-enter').style.display = 'inline-block';
-        document.querySelector('#main-panel').style.display = 'block';
-        document.querySelector('#enter-count-div').style.display = 'none';
     }
     return count;
-}
-
-document.querySelector('#enter-count').onclick = function() {
-    let inValue = document.querySelector('#input-count').value;
-    inValue = parseInt(inValue);
-    if (!isNaN(inValue)) {
-        let goValue = Math.floor(inValue/6) * 6;
-        enterOff();
-        count = goValue;
-        document.querySelector('#counter').innerHTML = count;
-        saveSession(count);
-    }
 }
 
 function scrollToBottom() {
@@ -46,6 +38,18 @@ let count = restoreSession();
 const correctRegion = document.querySelector('#correct-region');
 const piInput = document.querySelector('#pi-input');
 let currentInput = '';
+
+document.querySelector('#enter-count').onclick = function() {
+    let inValue = document.querySelector('#input-count').value;
+    inValue = parseInt(inValue);
+    if (!isNaN(inValue)) {
+        let goValue = Math.floor(inValue/6) * 6;
+        enterOff();
+        count = goValue;
+        document.querySelector('#counter').innerHTML = count;
+        saveSession(count);
+    }
+}
 
 function incorrectEntry() {
     piInput.disabled = true;
