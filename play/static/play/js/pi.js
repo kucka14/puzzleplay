@@ -29,7 +29,7 @@ const piText = JSON.parse(document.getElementById('pi_text').textContent);
 let count = restoreSession();
 const correctRegion = document.querySelector('#correct-region');
 const piInput = document.querySelector('#pi-input');
-piInput.addEventListener('keydown', function(e) {
+piInput.addEventListener('keypress', function(e) {
     e.preventDefault();
     if ('0123456789'.includes(e.key)) {
         piInput.value += e.key;
