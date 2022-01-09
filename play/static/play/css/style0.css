@@ -64,6 +64,44 @@
     margin-bottom: 10px;
 }
 
+#top-panel-container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+#top-panel {
+    position: fixed;
+    margin-top: 3px;
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 3px solid navy;
+    color: navy;
+    width: 250px;
+    border-radius: 3px;
+    padding-left: 3px;
+    padding-right: 3px;
+    background-color: white;
+    opacity: 0.8;
+}
+
+#main-panel {
+    padding-top: 50px;
+    text-align: center;
+    padding-bottom: 30px;
+}
+
+#correct-region {
+    font-size: 40px;
+}
+
+#pi-input {
+    color: green;
+    font-size: 40px;
+    width: 150px;
+}
 
 
 

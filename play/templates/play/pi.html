@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block body %}
+
+<div id="top-panel-container">
+    <div id="top-panel">
+        <div id="count-region">0</div>
+        <div id="reset-div">
+            <button id="reset-enter">Reset</button>
+            <div style="display: none;" id="reset-confirm-div">
+                Are you sure?
+                <button id="reset-confirm">Yes</button>
+                <button id="reset-quit">No</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="main-panel">
+    <div id="correct-region"></div>
+    <input id="pi-input">
+</div>
+
+{{ pi_text|json_script:"pi_text" }}
+
+<script src="/static/play/js/pi.js"></script>
+
+{% endblock %}
