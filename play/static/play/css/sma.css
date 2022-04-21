@@ -1,8 +1,66 @@
+#main-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+#left-side {
+    background-color: green;
+    width: 50%;
+}
+
+#fixed-box {
+    background-color: white;
+    width: calc(50% - 30px);
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    overflow: hidden;
+    padding: 15px;
+}
+
+@media screen and (max-width: 900px) {
+    #fixed-box {
+        width: calc(100% - 480px);
+    }
+}
+
+#explanation-box {
+    display: flex;
+}
+
+#explanation-instructions {
+    width: calc(100% - 200px);
+    background-color: orange;
+}
+
+#equation-region {
+    margin-top: 30px;
+    background-color: blue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#equation-input {
+    width: 100%;
+}
+
+#right-side {
+    width: 50%;
+    background-color: yellow;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 450px;
+}
+
 .profile-box {
     width: 400px;
     background-color: darkslategray;
     padding: 3px;
     color: white;
+    margin: 10px;
 }
 
 .profile-top {

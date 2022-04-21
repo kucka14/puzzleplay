@@ -1,50 +1,65 @@
 {% extends "base.html" %}
 {% block body %}
 
-<div class="profile-box">
-    <div class="profile-top">
-        Score: 45.6 | Ranking: 1
-    </div>
-    <div class="profile-a profile-inner">
-        <img src="{{profile.banner}}" width="100%">
-    </div>
-    <div class="profile-b profile-inner">
-        <div class="profile-b-left">
-            <img src="{{profile.picture}}" width="100%">
-        </div>
-        <div class="profile-b-right">
-            <div>
-                {{profile.username}}
-                <br>
-                {{profile.display_name}}
+<div id="main-container">
+    <div id="left-side">
+        <div id="fixed-box">
+        
+            <div id="explanation-box">
+                
+                <div id="explanation-instructions">
+                    alskdfjlsdfjalsd jflkasdf
+                </div>
+            
+                <div class="profile-box" style="font-size: 8px; width: 250px; margin: 5px;">
+                    <div class="profile-a profile-inner">
+                        <img src="{{profile.banner}}" width="100%">
+                    </div>
+                    <div class="profile-b profile-inner">
+                        <div class="profile-b-left">
+                            <img src="{{profile.picture}}" width="100%">
+                        </div>
+                        <div class="profile-b-right">
+                            <div>
+                                {{profile.username}}
+                                <br>
+                                {{profile.display_name}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="profile-c profile-inner">
+                        {{profile.description}}
+                    </div>
+                    <div class="profile-d profile-inner">
+                        <div>
+                            {{profile.followers}} Followers
+                        </div>
+                        <div>
+                            {{profile.following}} Following
+                        </div>
+                        <div>
+                            {{profile.posts}} Posts
+                        </div>
+                    </div>
+                    <div class="profile-e profile-inner">
+                        Profile created {{profile.age}} days ago.
+                    </div>
+                </div>
+                
             </div>
+            
+            <div id="equation-region">
+                <input id="equation-input">
+                <button id="equation-submit">Submit</button>
+            </div>
+            
         </div>
     </div>
-    <div class="profile-c profile-inner">
-        {{profile.description}}
-    </div>
-    <div class="profile-d profile-inner">
-        <div>
-            {{profile.followers}} Followers
-        </div>
-        <div>
-            {{profile.following}} Following
-        </div>
-        <div>
-            {{profile.posts}} Posts
-        </div>
-    </div>
-    <div class="profile-e profile-inner">
-        Created {{profile.age}} days ago.
+
+    <div id="right-side">
+        <div id="profile-container"></div>
     </div>
 </div>
-
-
-
-
-
-
-
 
 
 

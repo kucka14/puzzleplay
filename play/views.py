@@ -51,7 +51,7 @@ def sma(request):
 
     return render(request, 'play/sma.html', {
         
-        'profile': cleaned_profile_list[0],
+        'profile': clean_profile_dict(example_profile),
         'profiles': cleaned_profile_list,
         
     })
