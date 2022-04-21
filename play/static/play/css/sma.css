@@ -1,0 +1,42 @@
+.profile-box {
+    width: 400px;
+    background-color: darkslategray;
+    padding: 3px;
+    color: white;
+}
+
+.profile-top {
+    font-weight: bold;
+    text-align: center;
+}
+
+.profile-inner {
+    border: 1px solid white;
+    padding: 3px;
+    margin: 5px;
+}
+
+.profile-b {
+    display: flex;
+}
+
+.profile-b-left {
+    flex: 1;
+}
+
+.profile-b-right {
+    flex: 3;
+    padding: 3px;
+    padding-left: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.profile-d {
+    display: flex;
+    justify-content: space-between;
+}
+
+.profile-e {
+    text-align: center;
+}
