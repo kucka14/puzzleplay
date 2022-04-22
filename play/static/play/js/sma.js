@@ -16,25 +16,12 @@ function countSub(fullString, subString) {
 const profiles = JSON.parse(document.getElementById('profiles').textContent);
 const targetDiv = document.querySelector('#profile-container');
 
-function resetProfiles() {
-    targetDiv.innerHTML = '';
-    for (i = 0; i < 20; i++) {
-        const profileBox = document.createElement('div');
-        profileBox.classList.add('profile-box-blank');
-        profileBox.innerHTML = '?'
-        targetDiv.appendChild(profileBox);
-    }
-}
-
 document.querySelector('#equation-submit').onclick = function() {
 
     let equation = document.querySelector('#equation-input').value;
     let newVariable = document.querySelector('#variable-1').value;
     const newString = document.querySelector('#string-1').value;
     newVariable = newVariable.replace(' ', '');
-    
-    console.log(newVariable);
-    console.log(newString);
     
     let variableValid = 0;
     if (newVariable == '') {
@@ -43,7 +30,7 @@ document.querySelector('#equation-submit').onclick = function() {
         }
     } else {
         if (isLetter(newVariable)) {
-            if (newString == '') {
+            if ((newString == '') || ('lxypa'.includes(newVariable))) {
                 variableValid = -1;
             } else {
                 variableValid = 1;
@@ -82,9 +69,7 @@ document.querySelector('#equation-submit').onclick = function() {
         postEquation = postEquation.replace('p', profile.posts);
         postEquation = postEquation.replace('a', profile.age);
         if (variableValid == 1) {
-            console.log(postEquation);
             postEquation = postEquation.replace(newVariable, stringCount);
-            console.log(postEquation);
         }
         
         try {
@@ -106,7 +91,7 @@ document.querySelector('#equation-submit').onclick = function() {
     }
     
     if (variableValid == -1) {
-        alert('Error: Something was wrong with your variable.'); 
+        alert('Error: Something was wrong with the variable you added.'); 
     }
     
     if (willAlert) {
@@ -172,8 +157,27 @@ document.querySelector('#equation-submit').onclick = function() {
         targetDiv.appendChild(profileBox);
     }
 }
+
+let refreshWarning = true;
+
+document.querySelector('#reset-button').onclick = function() {
+    refreshWarning = false;
+    window.location.href = '/algorithms/';
+}
+
+window.onbeforeunload = function() {
+    if (refreshWarning) {
+        return '';
+    }
+}
     
-resetProfiles();
+targetDiv.innerHTML = '';
+for (i = 0; i < 20; i++) {
+    const profileBox = document.createElement('div');
+    profileBox.classList.add('profile-box-blank');
+    profileBox.innerHTML = '?'
+    targetDiv.appendChild(profileBox);
+}
     
     
     
