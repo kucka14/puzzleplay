@@ -1,37 +1,138 @@
-const profiles = JSON.parse(document.getElementById('profiles').textContent);
 
+function isLetter(str) {
+    if (str.length === 1 && str.match(/[a-zA-Z]/i)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function countSub(fullString, subString) {
+    const re = new RegExp(subString, 'g');
+    const stringCount = (fullString.match(re) || []).length;
+    return stringCount;
+}
+
+const profiles = JSON.parse(document.getElementById('profiles').textContent);
+const targetDiv = document.querySelector('#profile-container');
+
+function resetProfiles() {
+    targetDiv.innerHTML = '';
+    for (i = 0; i < 20; i++) {
+        const profileBox = document.createElement('div');
+        profileBox.classList.add('profile-box-blank');
+        profileBox.innerHTML = '?'
+        targetDiv.appendChild(profileBox);
+    }
+}
 
 document.querySelector('#equation-submit').onclick = function() {
 
     let equation = document.querySelector('#equation-input').value;
+    let newVariable = document.querySelector('#variable-1').value;
+    const newString = document.querySelector('#string-1').value;
+    newVariable = newVariable.replace(' ', '');
     
-    sortedProfiles = []
+    console.log(newVariable);
+    console.log(newString);
+    
+    let variableValid = 0;
+    if (newVariable == '') {
+        if (newString != '') {
+            variableValid = -1;
+        }
+    } else {
+        if (isLetter(newVariable)) {
+            if (newString == '') {
+                variableValid = -1;
+            } else {
+                variableValid = 1;
+            }
+        } else {
+            variableValid = -1;
+        }
+    }
+    
+    let willAlert = false;
+    let sortedProfiles = []
     for (i = 0; i < profiles.length; i++) {
     
         const profile = profiles[i];
+        let postEquation = equation;
         
-        equation = equation.replace('l', profile.description.length)
-        equation = equation.replace('x', profile.followers)
-        equation = equation.replace('y', profile.following)
-        equation = equation.replace('p', profile.posts)
-        equation = equation.replace('a', profile.age)
+        postEquation = postEquation.replace(' ', '');
+        postEquation = postEquation.replace(/[0-9][a-zA-Z]/g, function(match) {
+            return match[0] + '*' + match[1];
+        });
+        postEquation = postEquation.replace(/[a-zA-Z0-9)]\(/g, function(match) {
+            return match[0] + '*' + match[1];
+        });
+        postEquation = postEquation.replace(/\)[a-zA-Z0-9(]/g, function(match) {
+            return match[0] + '*' + match[1];
+        });
         
-        const score = eval(equation);
+        let stringCount = false;
+        if (variableValid == 1) {
+            stringCount = countSub(profile.description, newString);
+        }
+        
+        postEquation = postEquation.replace('l', profile.description.length);
+        postEquation = postEquation.replace('x', profile.followers);
+        postEquation = postEquation.replace('y', profile.following);
+        postEquation = postEquation.replace('p', profile.posts);
+        postEquation = postEquation.replace('a', profile.age);
+        if (variableValid == 1) {
+            console.log(postEquation);
+            postEquation = postEquation.replace(newVariable, stringCount);
+            console.log(postEquation);
+        }
+        
+        try {
+            score = eval(postEquation);
+            if (isNaN(score)) {
+                willAlert = true;
+                score = 'Unknown';
+            } else {
+                score = Math.round(score * 100) / 100;
+            }
+        }
+        catch(err) {
+            willAlert = true;
+            score = 'Unknown';
+        }
         
         profileCouplet = [score, profile];
+        sortedProfiles.push(profileCouplet);
     }
     
-    sorted(sortedProfiles, key=lambda x: x[0]);
-    console.log(sortedProfiles);
+    if (variableValid == -1) {
+        alert('Error: Something was wrong with your variable.'); 
+    }
+    
+    if (willAlert) {
+        alert('Error: Expression could not be evaluated for all profiles.');
+    }
+    
+    sortedProfiles.sort(function(x,y){return x[0] - y[0];});
+    sortedProfiles = sortedProfiles.reverse();
+    
+    targetDiv.innerHTML = '';
     
     for (i = 0; i < sortedProfiles.length; i++) {
+    
+        const score = sortedProfiles[i][0];
+        const profile = sortedProfiles[i][1];
+        let ranking = i + 1;
+        if (score == 'Unknown') {
+            ranking = 'Unknown';
+        }
         
         const profileBox = document.createElement('div');
-        profileBox.class = "profile-box";
+        profileBox.class = 'profile-box';
         profileBox.innerHTML = `
             <div class="profile-box">
                 <div class="profile-top">
-                    Score: ${score} | Ranking: ${i + 1}
+                    Score: ${score} | Ranking: ${ranking}
                 </div>
                 <div class="profile-a profile-inner">
                     <img src="${profile.banner}" width="100%">
@@ -68,13 +169,11 @@ document.querySelector('#equation-submit').onclick = function() {
             </div>
             `
             
-        
-            
-        const targetDiv = document.querySelector('#profile-container');
         targetDiv.appendChild(profileBox);
     }
 }
     
+resetProfiles();
     
     
     

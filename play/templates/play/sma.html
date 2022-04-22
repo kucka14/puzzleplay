@@ -8,10 +8,24 @@
             <div id="explanation-box">
                 
                 <div id="explanation-instructions">
-                    alskdfjlsdfjalsd jflkasdf
+                    <strong>Social media platforms suggest friends for you. But how?</strong><br>
+                    Twenty social media profiles - simlar to the one on the right - have been randomly selected.
+                    Create an expression that will score each profile, so that they 
+                    can be ranked from least to most desirable, whatever that means. Use the variables 
+                    below in your expression.
+                    <br><br>
+                    l = length of profile description in characters
+                    <br>
+                    x = number of followers
+                    <br>
+                    y = number of people following
+                    <br>
+                    p = posts
+                    <br>
+                    a = age of account in days
                 </div>
             
-                <div class="profile-box" style="font-size: 8px; width: 250px; margin: 5px;">
+                <div class="profile-box" style="font-size: 8px; width: 250px; margin: 0px; margin-left: 5px;">
                     <div class="profile-a profile-inner">
                         <img src="{{profile.banner}}" width="100%">
                     </div>
@@ -48,6 +62,12 @@
                 
             </div>
             
+            <div id="variable-region">
+                <input id="variable-1" style="width: 40px;">
+                &nbsp= number of occurences of the string&nbsp
+                <input id="string-1" style="flex: 1;">
+            </div>
+            
             <div id="equation-region">
                 <input id="equation-input">
                 <button id="equation-submit">Submit</button>
@@ -57,6 +77,9 @@
     </div>
 
     <div id="right-side">
+        <div id="reset-box">
+            <button id="reset-button">Reset with new profiles</button>
+        </div>
         <div id="profile-container"></div>
     </div>
 </div>
