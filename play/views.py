@@ -1,11 +1,12 @@
 from django.shortcuts import render
 from .pi_text import pi_text
 
-import scipy.stats as stats
-
 import requests
 import json
 from .view_functions import example_profile, clean_profile_dict
+
+import numpy as np
+import random
 
 # Create your views here.
 
@@ -31,11 +32,12 @@ def pi(request):
     
 def zps(request):
 
-    a, b = 500, 600
-    mu, sigma = 550, 30
-    dist = stats.truncnorm((a - mu) / sigma, (b - mu) / sigma, loc=mu, scale=sigma)
+    
 
-    values = dist.rvs(1000)
+    x = np.random.normal(loc=550, scale=50, size=500)
+    
+    for value in x:
+        print(int(value))
 
     return render(request, 'play/zps.html', {
 #        'zip_numbers': zip_numbers,
