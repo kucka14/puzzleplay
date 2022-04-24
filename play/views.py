@@ -3,10 +3,11 @@ from .pi_text import pi_text
 
 import requests
 import json
-from .view_functions import example_profile, clean_profile_dict
 
-import numpy as np
 import random
+
+from .vf_zbs import generate_dist, add_trailing_zeros
+from .vf_sma import example_profile, clean_profile_dict
 
 # Create your views here.
 
@@ -30,19 +31,46 @@ def pi(request):
     
     })
     
-def zps(request):
+def zbs(request):
 
+    zips_premean = random.randint(60, 120)
+    bops_premean = random.randint(60, 120)
+    while abs(bops_premean - zips_premean) < 30:
+        bops_premean = random.randint(45, 120)
+        
+    zips_sd = (random.randint(5, 15)/100) * zips_premean
+    bops_sd = (random.randint(5, 15)/100) * bops_premean
     
-
-    x = np.random.normal(loc=550, scale=50, size=500)
+    zips_times = generate_dist(zips_premean, zips_sd, 100)
+    bops_times = generate_dist(bops_premean, bops_sd, 100)
     
-    for value in x:
-        print(int(value))
-
-    return render(request, 'play/zps.html', {
-#        'zip_numbers': zip_numbers,
+    zips_times = [round(time, 2) for time in zips_times]
+    zips_mean = sum(zips_times) / len(zips_times)
+    zips_times_display = add_trailing_zeros(zips_times, 2)
+    zips_mean_display = add_trailing_zeros([round(zips_mean, 2)], 2)[0]
+    bops_times = [round(time, 2) for time in bops_times]
+    bops_mean = sum(bops_times) / len(bops_times)
+    bops_times_display = add_trailing_zeros(bops_times, 2)
+    bops_mean_display = add_trailing_zeros([round(bops_mean, 2)], 2)[0]
+    
+    data_dict = {
+        'zipsMean': zips_mean_display,
+        'zipsTimes': zips_times_display,
+        'bopsMean': bops_mean_display,
+        'bopsTimes': bops_times_display,
+    }
+    
+    return render(request, 'play/zbs.html', {
+        'data_dict': data_dict,
     
     })
+    
+    
+    
+    
+    
+    
+    
     
 def sma(request):
 

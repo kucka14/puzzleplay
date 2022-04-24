@@ -1,0 +1,95 @@
+#full-container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 15px;
+    background-color: purple;
+}
+
+#choice-box {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+#left-choice-div {
+    display: flex;
+    background-color: green;
+    height: 100px;
+    width: 150px;
+    justify-content: center;
+    align-items: center;
+}
+
+#right-choice-div {
+    display: flex;
+    background-color: yellow;
+    height: 100px;
+    width: 150px;
+    justify-content: center;
+    align-items: center;
+}
+
+#middle-choice-div {
+    display: flex;
+    padding: 10px;
+    width: 150px;
+    text-align: center;
+    background-color: pink;
+    height: 100px;
+    justify-content: center;
+    align-items: center;
+}
+
+#times-box {
+    display: flex;
+    flex: 1;
+    background-color: pink;
+    width: 100%;
+    padding: 5px;
+}
+
+#left-times-div {
+    width: 50%;
+    background-color: green;
+    margin-right: 5px;
+    padding-left: 5px;
+    padding-top: 5px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+}
+
+.times-div-inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+#right-times-div {
+    width: 50%;
+    background-color: yellow;
+    padding-left: 5px;
+    padding-top: 5px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+}
+
+.time-button {
+    margin-left: 5px;
+    margin-top: 5px;
+    width: 80px;
+    font-size: 12px;
+    background-color: lightgray;
+}
+
+
+
+
+
+
+
+
+
+
+

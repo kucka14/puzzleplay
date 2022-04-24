@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block body %}
+
+<div id="full-container">
+    <div id="choice-box">
+        <div id="left-choice-div">
+            <button id="zips-choice-button">Zips</button>
+        </div>
+        <div id="middle-choice-div">
+            Click the group you think is faster.
+        </div>
+        <div id="right-choice-div">
+            <button id="bops-choice-button">Bops</button>
+        </div>
+    </div>
+    
+    <div id="times-box">
+        <div id="left-times-div">
+            <div id="zips-times-div-inner" class="times-div-inner">
+            
+            </div>
+        </div>
+        <div id="right-times-div">
+            <div id="bops-times-div-inner" class="times-div-inner">
+                
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{{ data_dict|json_script:"data_dict" }}
+
+<script src="/static/play/js/zbs.js"></script>
+
+{% endblock %}
