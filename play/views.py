@@ -53,10 +53,9 @@ def zbs(request):
     bops_times_display = add_trailing_zeros(bops_times, 2)
     bops_mean_display = add_trailing_zeros([round(bops_mean, 2)], 2)[0]
     
-    winner = 'Bops';
-    if (zips_mean < bops_mean) {
-        winner = 'Zips';
-    }
+    winner = 'Bops'
+    if zips_mean < bops_mean:
+        winner = 'Zips'
     
     data_dict = {
         'zipsMean': zips_mean_display,
