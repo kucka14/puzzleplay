@@ -1,13 +1,8 @@
 const dataDict = JSON.parse(document.getElementById('data_dict').textContent);
-console.log(dataDict)
 
+const winner = dataDict['winner'];
 const zipsMean = dataDict['zipsMean'];
 const bopsMean = dataDict['bopsMean'];
-let winner = 'Bops';
-if (zipsMean < bopsMean) {
-    winner = 'Zips';
-}
-
 const zipsTimes = dataDict['zipsTimes'];
 const bopsTimes = dataDict['bopsTimes'];
 
